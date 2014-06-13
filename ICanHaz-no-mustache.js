@@ -1,8 +1,7 @@
 /*!
 ICanHaz.js version 0.10.2 -- by @HenrikJoreteg
 More info at: http://icanhazjs.com
-*/
-(function () {
+*/(function () {
 /*!
   ICanHaz.js -- by @HenrikJoreteg
 */
@@ -68,10 +67,13 @@ More info at: http://icanhazjs.com
         // Whitespace at beginning and end of all templates inside <script> tags will
         // be trimmed. If you want whitespace around a partial, add it in the parent,
         // not the partial. Or do it explicitly using <br/> or &nbsp;
-        grabTemplates: function () {
+        // The optional context can be provided to grab templates from specific parts
+        // of the DOM and/or elements that have not yet been added to the document
+        // hierarchy
+        grabTemplates: function (context) {
             var i,
                 l,
-                scripts = document.getElementsByTagName('script'),
+                scripts = (context || document).getElementsByTagName('script'),
                 script,
                 trash = [];
             for (i = 0, l = scripts.length; i < l; i++) {
